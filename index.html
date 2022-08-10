@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Movies</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <img class="logo" src="images/logo.png" alt="logo">
+    <!--filter buttons -->
+    <div class="btn_container">
+        <button class="filter_btn" type="button" data-id="All">All</button>
+        <button class="filter_btn" type="button" data-id="Prequels">Prequels</button>
+        <button class="filter_btn" type="button" data-id="Originals">Originals</button>
+        <button class="filter_btn" type="button" data-id="Sequels">Sequels</button>
+    </div>
+
+    <div class="section-center">
+        <div class="movie-item">
+            <img class="photo" src="images/ep4.jpg" alt="ep4">
+            <h2>A New Hope</h2>
+            <h3>1977</h3>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        const movies = [
+            {
+                alt: 'ep1',
+                image: 'images/ep1.jpg',
+                title: 'The Phantom Menace',
+                year: 1999,
+                category: 'Prequels'
+            },
+
+            {
+                alt: 'ep2',
+                image: 'images/ep2.jpg',
+                title: 'Attack of the Clones',
+                year: 2002,
+                category: 'Prequels'
+            },
+
+            {
+                alt: 'ep3',
+                image: 'images/ep3.jpg',
+                title: 'Revenge of the Sith',
+                year: 2005,
+                category: 'Prequels'
+            },
+
+            {
+                alt: 'ep4',
+                image: 'images/ep4.jpg',
+                title: 'A New Hope',
+                year: 1977,
+                category: 'Originals'
+            },
+
+            {
+                alt: 'ep5',
+                image: 'images/ep5.jpg',
+                title: 'The Empire Strikes Back',
+                year: 1980,
+                category: 'Originals'
+            },
+
+            {
+                alt: 'ep6',
+                image: 'images/ep6.jpg',
+                title: 'Return of the Jedi',
+                year: 1983,
+                category: 'Originals'
+            },
+
+            {
+                alt: 'ep7',
+                image: 'images/ep7.jpg',
+                title: 'The Force Awakens',
+                year: 2015,
+                category: 'Sequels'
+            },
+
+            {
+                alt: 'ep8',
+                image: 'images/ep8.jpg',
+                title: 'The Last Jedi',
+                year: 2017,
+                category: 'Sequels'
+            },
+
+            {
+                alt: 'ep9',
+                image: 'images/ep9.jpg',
+                title: 'The Rise of Skywalker',
+                year: 2019,
+                category: 'Sequels'
+            }
+        ]
+
+        const sectionCenter = document.querySelector('.section-center');
+        const btns = document.querySelectorAll('.filter_btn');
+
+        //load page
+        window.addEventListener('DOMContentLoaded', function () {
+            displayMovieMenu(movies)
+        })
+
+        //filter buttons functionality
+        //loop btns
+        //click event
+        //variable to store the click event with dataset attribute
+        //filter the array with if statement in the function
+        //if the filter category is the same as the category id that has been clicked, it will return that value
+        //outside of the function, if the category clicked on is 'All', then all the items will be displayed
+        //if anything else, the movieCategory filter will be called and the appropriate items will be displayed based on what is clicked
+        btns.forEach(function(btn){
+            btn.addEventListener('click', function(e){
+                const category = e.currentTarget.dataset.id;
+                const movieCategory = movies.filter(function(movieItem){
+                    if (movieItem.category === category) {
+                        return movieItem;
+                    }
+                })
+                if (category === 'All'){
+                    displayMovieMenu(movies);
+                } else {
+                    displayMovieMenu(movieCategory);
+                }
+            })
+        })
+
+        function displayMovieMenu(movieItem) {
+            let displayMovie = movieItem.map(function (movie) {
+                return `<div class="movie-item">
+            <img class="photo" src="${movie.image}" alt="${movie.alt}">
+            <h2>${movie.title}</h2>
+            <h3>${movie.year}</h3>
+            <br>
+            <br>
+        </div>`
+            })
+            displayMovie = displayMovie.join('');
+            sectionCenter.innerHTML = displayMovie;
+        }
+    </script>
+</body>
+
+</html>

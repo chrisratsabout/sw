@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,500;1,100;1,200;1,300;1,400;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: Raleway;
+    background-image: url(images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    color: yellow;
+}
+
+.filter_btn {
+    font-family: Raleway;
+    padding: 10px 15px;
+    background: none;
+    border-radius: 10px;
+    color: yellow;
+    border: solid 1px yellow;
+    transition: .2s linear;
+}
+
+.filter_btn:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.section-center {
+    width: 70%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.movie-item {
+    width: 300px;
+    margin: 15px 15px;
+}
+
+.photo {
+    width: 300px;
+    height: 400px;
+}
+
+.logo {
+    width:300px;
+}
